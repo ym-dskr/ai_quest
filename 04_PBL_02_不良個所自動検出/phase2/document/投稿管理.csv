@@ -1,0 +1,23 @@
+回数,内容,file,transform_train,transform_val_test,その他前処理,batch_size,optimaizer,model,oth_param,score
+1,VGG16ベースの転移学習,01_baseline.ipynb,"transforms.RandomResizedCrop(resize, scale=(0.8, 1.2)),  # データオーギュメンテーション
+# transforms.RandomAffine([-30, 30]), #回転なし
+transforms.Resize((resize, resize)), 
+# transforms.RandomHorizontalFlip(),  # データオーギュメンテーション
+transforms.ToTensor(),  # テンソルに変換
+transforms.Normalize(mean, std)  # 標準化","transforms.Resize((resize, resize)),  # リサイズ
+transforms.CenterCrop(resize),  # 画像中央をresize×resizeで切り取り
+transforms.ToTensor(),  # テンソルに変換
+transforms.Normalize(mean, std)  # 標準化",なし,16,adam,VGG16,"・resize = 224
+・mean = (0.485, 0.456, 0.406)
+・std = (0.229, 0.224, 0.225)",±0
+2,VGG16ベースのファインチューニング,02_baseline.ipynb,"transforms.RandomResizedCrop(resize, scale=(0.8, 1.2)),  # データオーギュメンテーション
+# transforms.RandomAffine([-30, 30]), #回転なし
+transforms.Resize((resize, resize)), 
+# transforms.RandomHorizontalFlip(),  # データオーギュメンテーション
+transforms.ToTensor(),  # テンソルに変換
+transforms.Normalize(mean, std)  # 標準化","transforms.Resize((resize, resize)),  # リサイズ
+transforms.CenterCrop(resize),  # 画像中央をresize×resizeで切り取り
+transforms.ToTensor(),  # テンソルに変換
+transforms.Normalize(mean, std)  # 標準化",なし,16,SGD,VGG16,"・resize = 224
+・mean = (0.485, 0.456, 0.406)
+・std = (0.229, 0.224, 0.225)",
